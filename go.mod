@@ -1,4 +1,4 @@
-module github.com/simoncrowe/reticle-schema
+module github.com/simoncrowe/shortlist-schema
 
 go 1.22.5
 
