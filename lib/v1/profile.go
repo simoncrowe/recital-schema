@@ -1,6 +1,7 @@
 package profiles
 
 import (
+	"bytes"
 	"encoding/json"
 	"io"
 )
@@ -10,12 +11,20 @@ type Profile struct {
 	Metadata map[string]interface{} `json:"metadata"`
 }
 
-func DecodeProfile(r io.Reader) (Profile, error) {
+func DecodeProfileJSON(r io.Reader) (Profile, error) {
 	var profile Profile
 	if err := json.NewDecoder(r).Decode(&profile); err != nil {
 		return profile, err
 	}
 	return profile, nil
+}
+
+func EncodeProfileJSON(profile Profile) (string, error) {
+	buff := bytes.NewBuffer([]byte{})
+	if err := json.NewEncoder(buff).Encode(&profile); err != nil {
+		return "", err
+	}
+	return buff.String(), nil
 }
 
 func ValidateProfile(profile Profile) []string {
