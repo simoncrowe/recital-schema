@@ -1,3 +1,3 @@
 # shortlist-schema
 
-Shared schemas within the Reticle profile selection system.
+Shared schemas within the Shortlist profile selection system.
